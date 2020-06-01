@@ -19,7 +19,6 @@
 # SOFTWARE.
 """
 A Python interface to the ANU Quantum Random Numbers Server.
-
 http://qrng.anu.edu.au
 """
 
@@ -113,7 +112,7 @@ def randint(min=0, max=10, generator=None):
     source_size = int(math.ceil(source_bits / float(INT_BITS)))
     source_max = 2 ** (source_size * INT_BITS) - 1
 
-    modulos = source_max / rand_range
+    modulos = source_max // rand_range
     too_big = modulos * rand_range
     while True:
         num = 0
@@ -123,35 +122,7 @@ def randint(min=0, max=10, generator=None):
         if num >= too_big:
             continue
         else:
-            return num / modulos + min
-
-
-def randfloat(min=0, max=10, generator=None):
-    """Return an float between min and max. If given, takes from generator instead.
-    This can be useful to reuse the same cached_generator() instance over multiple calls."""
-    rand_range = max - min
-    if rand_range == 0:
-        # raise ValueError("range cannot be zero")  # meh
-        return min
-
-    if generator is None:
-        generator = cached_generator()
-
-    source_bits = int(math.ceil(math.log(rand_range + 1, 2)))
-    source_size = int(math.ceil(source_bits / float(INT_BITS)))
-    source_max = 2 ** (source_size * INT_BITS) - 1
-
-    modulos = source_max / rand_range
-    too_big = modulos * rand_range
-    while True:
-        num = 0
-        for x in range(source_size):
-            num <<= INT_BITS
-            num += next(generator)
-        if num >= too_big:
-            continue
-        else:
-            return num / modulos + min
+            return num // modulos + min
 
 
 def uint16(array_length=100):
