@@ -33,10 +33,6 @@ Command-line tool
 
     $ qrandom --int --min 5 --max 15
     7
-    $ qrandom --binary
-    ���I�%��e(�1��c��Ee�4�������j�Կ��=�^H�c�u
-    oq��G��Z�^���fK�0_��h��s�b��AE=�rR~���(�^Q�)4��{c�������X{f��a�Bk�N%#W
-    +a�a̙�IB�,S�!ꀔd�2H~�X�Z����R��.f
     ...
     $ qrandom --hex
     1dc59fde43b5045120453186d45653dd455bd8e6fc7d8c591f0018fa9261ab2835eb210e8
